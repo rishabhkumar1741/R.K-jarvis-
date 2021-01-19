@@ -2,6 +2,7 @@ import pyttsx3
 import datetime
 import speech_recognition as sr
 import pyaudio
+import math
 
 class Jarvis():
     def __init__(self):
@@ -37,30 +38,52 @@ class Jarvis():
             print("TRY again ")
             return "None"
 
-    def sum(self):
-        self.speak("sum of two number is 10")
+class calculator(Jarvis):
+
+    def sums(self,*args):
+        a = sum(args[0])
+        self.speak(f"Sir Sum is {a}")
+     
+    def subtration(self,var1,var2):
+        ans = var1-var2
+        self.speak(ans)
+    def multi(self,*args):
+        mul = 1
+        for x in args[0]:
+            mul *=x
+        self.speak(f"{mul}")
+    def div(self,var1,var2):
+        ans  = var1/var2
+        self.speak(ans)
+    
+        
+            
+
 
     
 
-
-if __name__ == "__main__":
-    obj = Jarvis()
-    obj.wish()
-    message = obj.take_command()
-    message =message.split(' ')
-    print(message)
-    for x in message:
-        if x == "addition":
-            print("sum function")
-            break
-        elif x =="subtract":
-            print("sub")
-            break
-        elif x =="multiply":
-            print("mul")
-            break
-        else:
-            print("not under stant")
+if __name__ == "__main__" :
+    # obj = Jarvis()
+    a = calculator()
+    b=(1,2,3,4,5)
+    a.sums(b)
+    
+    # obj.wish()
+    # message = obj.take_command()
+    # message =message.split(' ')
+    # print(message)
+    # for x in message:
+    #     if x == "addition":
+    #         print("sum function")
+    #         break
+    #     elif x =="subtract":
+    #         print("sub")
+    #         break
+    #     elif x =="multiply":
+    #         print("mul")
+    #         break
+    #     else:
+    #         print("not under stant")
 
 
 

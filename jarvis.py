@@ -35,7 +35,6 @@ class Jarvis():
             message = r.recognize_google(audio,language='en-in') 
             return message   
         except Exception as e:
-            print("TRY again ")
             return "None"
 
 class calculator(Jarvis):
@@ -55,35 +54,54 @@ class calculator(Jarvis):
     def div(self,var1,var2):
         ans  = var1/var2
         self.speak(ans)
-    
-        
-            
-
-
-    
+   
 
 if __name__ == "__main__" :
-    # obj = Jarvis()
-    a = calculator()
-    b=(1,2,3,4,5)
-    a.sums(b)
-    
-    # obj.wish()
-    # message = obj.take_command()
-    # message =message.split(' ')
-    # print(message)
-    # for x in message:
-    #     if x == "addition":
-    #         print("sum function")
-    #         break
-    #     elif x =="subtract":
-    #         print("sub")
-    #         break
-    #     elif x =="multiply":
-    #         print("mul")
-    #         break
-    #     else:
-    #         print("not under stant")
+    obj = Jarvis()
+    obj.wish()
+    message = obj.take_command()
+    message.lower()
+    message = message.split(' ')
+    print(message)
+
+
+    if "father"  in message:
+        obj.speak("Rishabh is my father")
+    else:
+        pass
+
+    if "addition" in message:
+        print("run")
+        numbers = list()
+        for x in message:
+            if x.isdecimal():
+                numbers.append(int(x))
+        obj = calculator()
+        obj.sums(numbers)
+
+    elif  "subtraction"   in message:
+        numbers = list()
+        for x in message:
+            if x.isdecimal():
+                numbers.append(int(x))
+        obj = calculator()
+        obj.subtration(numbers[0],numbers[1])
+
+    elif  "multiplication"   in message:
+        numbers = list()
+        for x in message:
+            if x.isdecimal():
+                numbers.append(int(x))
+        obj = calculator()
+        obj.multi(numbers)  
+
+    elif  "division"  in message:
+        numbers = list()
+        for x in message:
+            if x.isdecimal():
+                numbers.append(int(x))
+        obj = calculator()
+        obj.div(numbers[0],numbers[1])
 
 
 
